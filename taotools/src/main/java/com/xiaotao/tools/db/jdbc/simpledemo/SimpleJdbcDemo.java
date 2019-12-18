@@ -16,12 +16,16 @@ public class SimpleJdbcDemo {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String url = "jdbc:mysql://127.0.0.1/world";
+		
 		String name = "com.mysql.jdbc.Driver";
 		String user = "xiaotao";
 		String password = "xiaotao";
-		String preparesql = "select * from world.city where CountryCode=?  limit ?;";
-		String nativeSQL = "select * from world.city  limit 2";
+//		String url = "jdbc:mysql://127.0.0.1/world";
+//		String preparesql = "select * from world.city where CountryCode=?  limit ?;";
+//		String nativeSQL = "select * from world.city  limit 2";
+		String url = "jdbc:mysql://127.0.0.1/mysql?serverTimezone=UTC";
+		String preparesql = "select * from mysql.user where user=?  limit ?;";
+		String nativeSQL = "select * from mysql.user  limit 2";
 
 		Connection conn = null;
 		PreparedStatement pst = null;
