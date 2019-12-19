@@ -7,11 +7,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 
 public class SimpleJdbcDemo {
 	
 	
+	private static Logger log = LoggerFactory.getLogger(SimpleJdbcDemo.class);
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -50,18 +54,18 @@ public class SimpleJdbcDemo {
 				String Name = ret.getString(2);
 				String CountryCode = ret.getString(3);
 				String District = ret.getString(4);
-				System.out.println(ID + "\t" + Name + "\t" + CountryCode + "\t" + District);
+				log.info(ID + "\t" + Name + "\t" + CountryCode + "\t" + District);
 			} // 显示数据
 
 			/*---使用native方式-----------------------*/
-			System.out.println(conn.nativeSQL(nativeSQL));
+			log.info(conn.nativeSQL(nativeSQL));
 
 			/*---statement方式--------------------*/
-			System.out.println("---statement方式--------------------");
+			log.info("---statement方式--------------------");
 			stat = (Statement) conn.createStatement();
 			ResultSet stateret = ((java.sql.Statement) stat).executeQuery(nativeSQL);
 			stateret.next();
-			System.out.println(stateret.getString(1));
+			log.info(stateret.getString(1));
 
 			conn.commit();
 			ret.close();
@@ -71,7 +75,7 @@ public class SimpleJdbcDemo {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.info("执行数据库异常", e);
 		}
 
 	}
