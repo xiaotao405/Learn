@@ -18,8 +18,6 @@ public class SimpleJdbcDemo {
 	private static Logger log = LoggerFactory.getLogger(SimpleJdbcDemo.class);
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 		
 		String name = "com.mysql.jdbc.Driver";
 		String user = "xiaotao";
@@ -74,7 +72,6 @@ public class SimpleJdbcDemo {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			log.info("执行数据库异常", e);
 		}
 
